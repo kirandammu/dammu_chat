@@ -15,6 +15,12 @@ const ChatHeader = () => {
           <div className="avatar">
             <div className="size-10 rounded-full relative">
               <img src={selectedUser.profilePic || "/avatar.png"} className="rounded-full " alt={selectedUser.fullName} />
+              {onlineUsers.includes(selectedUser._id) && (
+                <span
+                  className="absolute bottom-0 right-0 w-2.5 h-2.5 border-1 border-white bg-green-500 
+                  rounded-full "
+                />
+              )}
             </div>
           </div>
 
