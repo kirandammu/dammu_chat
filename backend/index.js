@@ -23,7 +23,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
 app.get('/',(req,res)=>{
-  res.send(<h1>Hello Dammu Chat App</h1>)
+  res.send('<h1>Hello Dammu Chat App</h1>')
 })
 
   server.listen(PORT, () => {
