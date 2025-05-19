@@ -8,6 +8,8 @@ import authRoutes from "./src/routes/auth.route.js";
 import messageRoutes from "./src/routes/message.route.js";
 import { app, server } from "./src/utils/socket.js";
 
+const PORT = process.env.PORT || 5000
+
 dotenv.config();
 //connect to database
 connectDB();
@@ -24,12 +26,10 @@ app.get('/',(req,res)=>{
   res.send(<h1>Hello Dammu Chat App</h1>)
 })
 
-if (process.env.NODE_ENV !== "production") {
-  const PORT = process.env.PORT || 5000
   server.listen(PORT, () => {
     console.log("server is running on PORT:" + PORT);
     
   });
-}
+
 
 export default server;
