@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
+const BASE_URL = "https://dammu-chat-2.onrender.com" || "http://localhost:5000"
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
