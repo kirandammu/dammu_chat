@@ -8,7 +8,7 @@ import authRoutes from "./src/routes/auth.route.js";
 import messageRoutes from "./src/routes/message.route.js";
 import { app, server } from "./src/utils/socket.js";
 
-const PORT = process.env.PORT || 5000
+const PORT = "https://dammu-chat-2.onrender.com" || 5000
 
 dotenv.config();
 //connect to database
