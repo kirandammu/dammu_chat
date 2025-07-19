@@ -68,3 +68,13 @@ export const sendMessage = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+export const markSeenMessages = async (req,res)=>{
+    try {
+        const id = req.params.id
+        await Message.findByIdAndUpdate(id, {seen:true})
+        res.json({success:true})
+    } catch (error) {
+        console.log(error.message)
+        res.json({success:false, message:error.message})   
+    }
+}

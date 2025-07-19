@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useAuthContext } from "../../context/AuthContext";
 import { useChatContext } from "../../context/ChatContext";
 import { RxCrossCircled } from "react-icons/rx";
@@ -6,6 +7,18 @@ import { RxCrossCircled } from "react-icons/rx";
 const ChatHeader = () => {
   const { selectedUser, setSelectedUser } = useChatContext();
   const { onlineUsers } = useAuthContext();
+  const [time,setTime] = useState(0)
+
+  
+
+  useEffect(()=>{
+    if(!selectedUser) return
+    setTime(0)
+    const interval = setInterval(()=>{
+      setTime((rev)=>rev+1)
+  },1000)
+ return ()=>clearInterval(interval)
+  },[selectedUser._id])
 
   return (
     <div className="p-2.5 border-b border-base-300 bg-white">
@@ -39,6 +52,7 @@ const ChatHeader = () => {
           <RxCrossCircled className="text-black  rounded-full w-6 h-6" />
         </button>
       </div>
+      <div className="">Active time: {time}s</div>
     </div>
   );
 };

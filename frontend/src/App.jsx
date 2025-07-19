@@ -19,7 +19,7 @@ const App = () => {
   if (isCheckingAuth && !authUser)
     return (
       <div className="flex flex-col items-center justify-center h-screen">
-        <TbLoader3 className="text-9xl animate-spin" />
+        <TbLoader3 className="text-5xl animate-spin" />
         <p className="font-semibold text-black text-xl animate-bounce"> Dammu Chat</p>
 
       </div>

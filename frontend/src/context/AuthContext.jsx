@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 
-const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5000" : "";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -17,8 +17,6 @@ export const AuthProvider = ({ children }) => {
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [socket, setSocket] = useState(null);
   const navigate = useNavigate()
-  const [typing, setTyping] = useState(false)
-  const [isTyping, setIsTyping] = useState(false)
 
   const signup = async (data) => {
     setIsSigningUp(true);
@@ -78,7 +76,7 @@ export const AuthProvider = ({ children }) => {
   const checkAuth = async () => {
   try {
     const res = await axiosInstance.get("/auth/check");
-    setAuthUser(res.data);
+    setAuthUser(res?.data);
     connectSocket(res.data); 
   } catch (error) {
     console.log("Error in checkAuth:", error);

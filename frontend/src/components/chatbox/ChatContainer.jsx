@@ -11,7 +11,7 @@ const ChatContainer = () => {
   const {
     messages,
     getMessages,
-    isMessagesLoading,
+    isTyping,
     selectedUser,
     subscribeToMessages,
     unsubscribeFromMessages,
@@ -35,7 +35,7 @@ const ChatContainer = () => {
   }, [messages]);
 
   return (
-    <div className="flex-1 flex flex-col overflow-auto bg-gray-200">
+    <div className="flex-1 flex flex-col overflow-auto bg-linear-to-b from-pink-300 via-pink-100 to-pink-300">
       <ChatHeader />
 
       <div className="flex-1 overflow-y-auto p-4 space-y-2">
@@ -70,6 +70,8 @@ const ChatContainer = () => {
             </div>
           </div>
         ))}
+        {isTyping && <div className="text-sm text-gray-500 mt-1 ml-2">Typing...</div>}
+
       </div>
 
       <MessageInput />

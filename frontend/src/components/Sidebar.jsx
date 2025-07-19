@@ -4,7 +4,7 @@ import { useAuthContext } from "../context/AuthContext";
 
 
 const Sidebar = () => {
-  const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } = useChatContext();
+  const { getUsers, users, selectedUser, setSelectedUser } = useChatContext();
   const [input, setInput] = useState('')
   const { onlineUsers } = useAuthContext();
 
@@ -16,7 +16,7 @@ const Sidebar = () => {
       const filteredUsers = input ? users.filter((user)=>user.email.toLowerCase().includes(input.toLowerCase())):users
 
   return (
-    <div className="h-full w-20 lg:w-72 border-r border-base-300 flex flex-col bg-gray-900 rounded-l transition-all duration-200">
+    <div className="h-full w-20 lg:w-72 border-r border-base-300 flex flex-col bg-black rounded-l transition-all duration-200">
       <div className='w-full py-1 p-2.5 my-3 rounded-2xl flex flex-col m-2 ' >
         <p className="py-1  font-semibold text-white">Search Email</p>
         <input placeholder='search here... ' onChange={(e)=>setInput(e.target.value)} type='text' className=' bg-gray-200 p-1.5 m-2 border rounded-md border-gray-500 outline-none' />
@@ -27,9 +27,9 @@ const Sidebar = () => {
             key={user._id}
             onClick={() => setSelectedUser(user)}
             className={`
-              w-full p-2 flex items-center gap-3
+              w-full p-2 flex items-center gap-3 hover:bg-gray-900
               hover:bg-base-300 transition-colors
-              ${selectedUser?._id === user._id ? " bg-gray-600 " : ""}
+              ${selectedUser?._id === user._id ? " bg-gray-800 " : ""}
             `}
           >
             <div className="relative mx-auto lg:mx-0">
